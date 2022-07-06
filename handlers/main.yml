@@ -1,0 +1,16 @@
+---
+- name: create i3-gaps build directory
+  file:
+    path: "{{ i3_gaps_git_path }}/build"
+    state: directory
+  register: build_dir
+
+- name: compile i3-gaps
+  command: "{{ item }}"
+  args:
+    chdir: "{{ i3_gaps_git_path }}/build"
+  with_items:
+    - meson ..
+    - ninja
+    - ninja install
+  become: true

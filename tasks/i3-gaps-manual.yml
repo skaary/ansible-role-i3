@@ -1,0 +1,42 @@
+---
+# - name: template # REMOVE WHEN DOTFILES DONE
+#   template:
+#     src: config.j2
+#     dest: "{{ i3_user_home }}/i3-config"
+
+- name: ensure i3-gaps build dependencies are installed
+  apt:
+    name: "{{ i3_gaps_shared_packages + i3_gaps_build_dependencies }}"
+    state: present
+  become: true
+
+- name: ensure git parent path exists
+  file:
+    path: "{{ i3_gaps_git_path | dirname }}"
+    state: directory
+    mode: 0755
+
+- name: fetch i3-gaps latest version
+  shell: |
+    curl https://github.com/Airblader/i3/releases 2>/dev/null \
+    | grep -E '/Airblader/i3/releases/tag/[.0-9]+' \
+    | grep -Eo '[.0-9]+' \
+    | sort -V \
+    | tail -1
+  register: i3_gaps_release_tag
+  check_mode: false
+  changed_when: false
+
+- name: ensure i3-gaps is cloned
+  git:
+    repo: "{{ i3_gaps_git_url }}"
+    dest: "{{ i3_gaps_git_path }}"
+    version: "{{ i3_gaps_release_tag.stdout }}"
+    clone: true
+    force: true
+    recursive: true
+    update: true
+    depth: "1"
+  notify:
+    - create i3-gaps build directory
+    - compile i3-gaps

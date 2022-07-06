@@ -1,0 +1,11 @@
+---
+skip_list:
+  - 'yaml'
+  - 'risky-shell-pipe'
+  - 'command-instead-of-module'
+  - 'experimental'
+  - 'no-changed-when'
+  - 'fqcn-builtins'
+  
+warn_list:
+  - 'internal-error'
