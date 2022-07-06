@@ -7,9 +7,9 @@
       package_facts:
         manager: "auto"
 
-    - name: Verify i3 is installed.
-      assert:
-        that:
-          - "'i3-wm' in ansible_facts.packages"
-        success_msg: "i3 is installed."
-        fail_msg: "i3 is not installed."
+    # - name: Verify i3 is installed.
+    #   assert:
+    #     that:
+    #       - "'i3-wm' in ansible_facts.packages"
+    #     success_msg: "i3 is installed."
+    #     fail_msg: "i3 is not installed."
