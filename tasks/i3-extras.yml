@@ -1,21 +1,6 @@
 ---
-# - name: ensure python is installed
-#   include_role:
-#     name: python-meta
-
 - name: ensure i3 extras packages are installed
   apt:
     name: "{{ i3_extras_packages }}"
     state: present
   become: true
-# - name: ensure flashfocus dependencies are installed
-#   apt:
-#     name: "{{ flashfocus_dependencies }}"
-#     state: present
-#   become: true
-
-# - name: ensure flashfocus is installed
-#   pip:
-#     name: flashfocus
-#     state: present
-#     extra_args: --user

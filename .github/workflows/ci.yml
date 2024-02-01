@@ -1,14 +1,14 @@
 ---
 name: CI
-'on':
+"on":
   pull_request:
   push:
     branches:
       - master
       - main
-
+    paths:
+      - "!README.md"
 jobs:
-
   test:
     name: Molecule
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python 3.
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Install test dependencies.
         run: pip3 install molecule[docker] yamllint ansible ansible-lint
@@ -28,5 +28,5 @@ jobs:
       - name: Run Molecule tests.
         run: molecule test
         env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"

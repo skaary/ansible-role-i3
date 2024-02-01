@@ -1,7 +1,5 @@
 ---
 i3: false
-i3_gaps_ppa: true
-i3_gaps_manual: false
 i3_extras: true
 # i3_user:
 #   - name: vagrant
@@ -15,52 +13,9 @@ i3_shared_packages:
   - i3lock
   - i3status
 
-i3_gaps_git_path: "{{ lookup('env','HOME') }}/.cache/i3-gaps-git"
 i3_gaps_package_name: i3-gaps
-# i3_gaps_git_path: "{{ i3_user_home }}/.cache/i3-gaps-git"
-i3_gaps_git_url: https://github.com/Airblader/i3
-i3_gaps_shared_packages:
-  - xinit
-  - i3lock
-  - i3status
-i3_gaps_build_dependencies:
-  # https://github.com/Airblader/i3/wiki/Compiling-&-Installing#debian-stretch
-  - autoconf
-  - automake
-  - curl
-  - gcc
-  - git
-  - libev-dev
-  - libpango1.0-dev
-  - libstartup-notification0-dev
-  - libxcb-cursor-dev
-  - libxcb-icccm4-dev
-  - libxcb-keysyms1-dev
-  - libxcb-randr0-dev
-  - libxcb-shape0-dev
-  - libxcb-util0-dev
-  - libxcb-xinerama0-dev
-  - libxcb-xkb-dev
-  - libxcb-xrm-dev
-  - libxcb-xrm0
-  - libxcb1-dev
-  - libxkbcommon-dev
-  - libxkbcommon-x11-dev
-  - libyajl-dev
-  - make
-  - meson
-  - ninja-build
-  - xcb
-
-flashfocus_dependencies:
-  - libxcb-render0-dev
-  - libffi-dev
-  - python-dev
-  - python-cffi
-  - python3-pip
 
 i3_extras_packages:
   - picom
-  # - compton
   - dunst
-  - rofi
+  # - rofi
